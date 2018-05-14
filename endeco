@@ -1,0 +1,21 @@
+#!/usr/local/bin/python3
+import sys
+
+try:
+    arg = sys.argv[1]
+except IndexError:
+    print("sys.argv:", sys.argv)
+
+
+if '0x' in arg:
+    chars = []
+    arg = arg.split('0x')
+    arg = ['0x' + c for c in arg][1:]
+    for p in arg:
+        chars.append(chr(int(p, 16)))
+    print (''.join(chars))
+else:
+    points = []
+    for c in arg:
+        points.append(hex(ord(c)))
+    print (''.join(points))
